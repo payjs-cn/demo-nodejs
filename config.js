@@ -5,8 +5,8 @@
  */
 
 
-var payjskey = ''; //payjs的商户号
-var payjsmchid = ''; //payjs的通信密钥
+var payjsmchid = ''; // payjs的商户号
+var payjskey = ''; // payjs的通信密钥
 
 exports.payjskey=payjskey;
 exports.payjsmchid=payjsmchid;
