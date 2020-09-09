@@ -64,9 +64,9 @@ function native(params, callback) {
 //收银台
 function cashier(params) {
     var sign_params = signature(params);
-    var querystring=require("querystring");
-    var res= querystring.stringify(sign_params);
-    var url = urlcashier + res;
+    var querystring = require("querystring");
+    var res = querystring.stringify(sign_params);
+    var url = urlcashier + '?' + res;
     return url;
 }
 
