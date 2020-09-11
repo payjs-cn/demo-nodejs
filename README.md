@@ -51,6 +51,50 @@ pay.native(params,function (msg) {
     /**TODO 这里处理业务逻辑 */
 });
 ```
+
+#### JSAPI
+构建入参：
+```
+var params = {
+  'mchid': cfg.payjsmchid,     //商户号
+  'total_fee': 1,              //金额。单位：分
+  'out_trade_no': '123456789', //用户端自主生成的订单号
+  'body': '订单标题',           //订单标题
+  'attach': '自定义数据',       //用户自定义数据，在notify的时候会原样返回
+  'openid': 'xxxxx',           //OPENID
+  'notify_url': ''             //接收微信支付异步通知的回调地址。必须为可直接访问的URL，不能带参数、session验证、csrf验证。留空则不通知
+};
+```
+调用：
+
+```
+pay.jsapi(params,function (msg) {
+    console.log(msg);
+    /**TODO 这里处理业务逻辑 */
+});
+```
+
+#### MWEB H5支付
+构建入参：
+```
+var params = {
+  'mchid': cfg.payjsmchid,     //商户号
+  'total_fee': 1,              //金额。单位：分
+  'out_trade_no': '123456789', //用户端自主生成的订单号
+  'body': '订单标题',           //订单标题
+  'attach': '自定义数据',       //用户自定义数据，在notify的时候会原样返回
+  'notify_url': ''             //接收微信支付异步通知的回调地址。必须为可直接访问的URL，不能带参数、session验证、csrf验证。留空则不通知
+};
+```
+调用：
+
+```
+pay.mweb(params,function (msg) {
+    console.log(msg);
+    /**TODO 这里处理业务逻辑 */
+});
+```
+
 #### 付款码支付（被扫）
 构建入参：
 ```
@@ -98,6 +142,22 @@ var params = {
 pay.close(params,function (msg) {
   console.log(msg);
   /**TODO 这里处理业务逻辑 */
+});
+```
+
+#### 投诉订单查询
+构建入参：
+```
+var params = {
+  'mchid': cfg.payjsmchid,     //商户号
+};
+```
+调用：
+
+```
+pay.complaint(params,function (msg) {
+    console.log(msg);
+    /**TODO 这里处理业务逻辑 */
 });
 ```
 #### 撤销订单接口

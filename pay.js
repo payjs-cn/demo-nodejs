@@ -16,6 +16,7 @@ var urluser = 'https://payjs.cn/api/user';
 var urlinfo = 'https://payjs.cn/api/info';
 var urlbank = 'https://payjs.cn/api/bank';
 var urlcomplaint = 'https://payjs.cn/api/complaint';
+var urlmweb = 'https://payjs.cn/api/mweb';
 
 var key = cfg.payjskey;
 
@@ -87,6 +88,20 @@ function micropay(params, callback) {
 //JSAPI
 function jsapi(params, callback) {
     request.post(urljsapi)
+        .send(signature(params))
+        .end(function (err, res) {
+            if (!err) {
+                callback(res.body);
+            } else {
+                console.log(err);
+                callback({'return_code': 0, 'msg': '本地调用出错'});
+            }
+        });
+}
+
+//JSAPI
+function mweb(params, callback) {
+    request.post(urlmweb)
         .send(signature(params))
         .end(function (err, res) {
             if (!err) {
@@ -215,4 +230,5 @@ exports.info = info;//商户资料
 exports.bank = bank;//银行资料
 exports.complaint = complaint;//投诉订单
 exports.cashier = cashier;// 收银台
+exports.mweb = mweb;// 收银台
 exports.notifyCheck = notifyCheck;//异步通知的数据校验
